@@ -161,10 +161,14 @@ class SiteController extends Controller
     public function actionView($id)
     {
         $article = Article::findOne($id);
-        $tags = ArrayHelper::map(Tag::find()->all(),'id', 'title');
+        $article_tag = ArticleTag::find()->select(['tag_id'])->from(['article_tag'])->where(['article_id' => $id])->all();
+        //$article->hasOne(Tag::className(),['id' => 'tag_id'])->viaTable('article_tag', ['id'=>'article_id']);
+        //ArticleTag::find()->where(['article_id' => $id])->all();
+        //var_dump(ArticleTag::find()->where(['article_id' => $id])->all()); die;
+        //$tags = ArrayHelper::map(,'id', 'title');
         return $this->render('single', [
             'article' => $article,
-            'tags' => $tags
+            'article_tag' => $article_tag
         ]);
     }
 

@@ -19,8 +19,8 @@
                             <?= $article->content; ?>
                         </div>
                         <div class="decoration">
-                            <?php foreach($tags as $tag):?>
-                                <a href="#" class="btn btn-default"><?= $tag; ?></a>
+                            <?php foreach($article_tag as $tag):?>
+                                <a href="#" class="btn btn-default"><?= $tag->getTag()->one()->title; ?></a>
                             <?php endforeach; ?>
                         </div>
 
