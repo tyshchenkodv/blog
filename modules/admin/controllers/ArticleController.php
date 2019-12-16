@@ -155,7 +155,7 @@ class ArticleController extends Controller
         $article = $this->findModel($id);
 
         //Готовим значение для формы
-        $selectedCategory = $article->category->id;
+        $selectedCategory = ($article->category) ? $article->category->id : '0';
 
         //Генерируем массив из БД
         $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
