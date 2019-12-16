@@ -187,6 +187,14 @@ class ArticleController extends Controller
         $selectedTags = $article->getSelectedTags();
         $tags = ArrayHelper::map(Tag::find()->all(), 'id', 'title');
 
+        if(Yii::$app->request->isPost)
+        {
+            $tags = Yii::$app->request->post('tags');
+            $article->saveTags($tags);
+
+            return $this->redirect(['view','id' => $article->id]);
+        }
+
         return $this->render('tags', [
             'article' => $article,
             'selectedTags' => $selectedTags,

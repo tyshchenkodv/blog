@@ -125,4 +125,17 @@ class Article extends \yii\db\ActiveRecord
         $selectedTags = $this->getTags()->select('id')->asArray()->all();
         return ArrayHelper::getColumn($selectedTags, 'id');
     }
+
+    public function saveTags($tags)
+    {
+        if(is_array($tags)){
+            //Удаляем записи перед добавлением новых
+            ArticleTag::deleteAll(['article_id' => $this->id]);
+
+            foreach($tags as $tag_id){
+                $tag = Tag::findOne($tag_id);
+                $this->link('tags', $tag);
+            }
+        }
+    }
 }
