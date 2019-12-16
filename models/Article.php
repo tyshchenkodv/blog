@@ -102,10 +102,12 @@ class Article extends \yii\db\ActiveRecord
 
     public function saveCategory($category_id)
     {
+        //Ловим переданный ДропДаун
         $category = Category::findOne($category_id);
-        //Создаём связь
+
         if($category != null)
         {
+            //Прописываем название связи и передаём с кем связывать
             $this->link('category', $category);
             return true;
         }

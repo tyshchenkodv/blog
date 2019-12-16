@@ -151,9 +151,10 @@ class ArticleController extends Controller
 
     public function actionSetCategory($id)
     {
+        //Цепляем нашу статью
         $article = $this->findModel($id);
 
-        //Передаём текущую категорию виду
+        //Готовим значение для формы
         $selectedCategory = $article->category->id;
 
         //Генерируем массив из БД
@@ -162,12 +163,14 @@ class ArticleController extends Controller
         if(Yii::$app->request->isPost)
         {
             $category = Yii::$app->request->post('category');
+            //Ловим ДропДаун по его названию и передаём методу saveCategory
             if($article->saveCategory($category))
             {
                 return $this->redirect(['view','id' => $article->id]);
             }
         }
 
+        //Все данные передаем в вид
         return $this->render('category',[
             'article' => $article,
             'selected' => $selectedCategory,
