@@ -94,4 +94,9 @@ class Article extends \yii\db\ActiveRecord
         $this->deleteImage();//Удаляем картинку во время удаления статьи
         return parent::beforeDelete();
     }
+
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
 }

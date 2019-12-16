@@ -146,4 +146,23 @@ class ArticleController extends Controller
 
         return $this->render('image', ['model' => $model]);
     }
+
+    public function actionSetCategory($id)
+    {
+        $article = $this->findModel($id);
+
+        //Передаём текущую категорию виду
+        $selectedCategory = $article->category->id;
+
+        $categories = [
+            1 => 'Cat 1',
+            2 => 'Cat 2'
+        ];
+
+        return $this->render('category',[
+            'article' => $article,
+            'selected' => $selectedCategory,
+            'categories' => $categories
+        ]);
+    }
 }
