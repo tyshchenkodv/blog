@@ -2,9 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
 use yii\widgets\LinkPager;
-use app\models\Article;
-use app\models\Category;
 
 $this->title = 'Home';
 ?>
@@ -16,9 +15,9 @@ $this->title = 'Home';
                 <?php foreach($articles as $article):?>
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="blog.html"><img src="<?= $article->getImage(); ?>" alt=""></a>
+                            <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]);?>"><img src="<?= $article->getImage(); ?>" alt=""></a>
 
-                            <a href="blog.html" class="post-thumb-overlay text-center">
+                            <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]);?>" class="post-thumb-overlay text-center">
                                 <div class="text-uppercase text-center">View Post</div>
                             </a>
                         </div>
@@ -26,7 +25,7 @@ $this->title = 'Home';
                             <header class="entry-header text-center text-uppercase">
                                 <h6><a href="#"> <?= $article->category->title; ?></a></h6>
 
-                                <h1 class="entry-title"><a href="blog.html"><?= $article->title; ?></a></h1>
+                                <h1 class="entry-title"><a href="<?= Url::toRoute(['site/view', 'id' => $article->id]);?>"><?= $article->title; ?></a></h1>
 
 
                             </header>
@@ -36,11 +35,11 @@ $this->title = 'Home';
                                 </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="blog.html" class="more-link">Continue Reading</a>
+                                    <a href="<?= Url::toRoute(['site/view', 'id' => $article->id]);?>" class="more-link">Continue Reading</a>
                                 </div>
                             </div>
                             <div class="social-share">
-                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On <?= $article->date; ?></span>
+                                <span class="social-share-title pull-left text-capitalize">By <a href="#">Rubel</a> On <?= $article->getDate(); ?></span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li><?= (int) $article->viewed; ?>
                                 </ul>
@@ -72,7 +71,7 @@ $this->title = 'Home';
 
                             <div class="p-content">
                                 <a href="#" class="text-uppercase"><?= $article->title; ?></a>
-                                <span class="p-date"><?= $article->date; ?></span>
+                                <span class="p-date"><?= $article->getDate(); ?></span>
 
                             </div>
                         </div>
@@ -92,7 +91,7 @@ $this->title = 'Home';
                                 </div>
                                 <div class="p-content">
                                     <a href="#" class="text-uppercase"><?= $article->title; ?></a>
-                                    <span class="p-date"><?= $article->date; ?></span>
+                                    <span class="p-date"><?= $article->getDate(); ?></span>
                                 </div>
                             </div>
                         </div>

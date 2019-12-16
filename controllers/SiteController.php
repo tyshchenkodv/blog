@@ -3,10 +3,13 @@
 namespace app\controllers;
 
 use app\models\Article;
+use app\models\ArticleTag;
 use app\models\Category;
+use app\models\Tag;
 use Yii;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -155,9 +158,14 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionView()
+    public function actionView($id)
     {
-        return $this->render('single');
+        $article = Article::findOne($id);
+        $tags = ArrayHelper::map(Tag::find()->all(),'id', 'title');
+        return $this->render('single', [
+            'article' => $article,
+            'tags' => $tags
+        ]);
     }
 
     public function actionCategory()
