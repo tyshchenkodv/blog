@@ -72,4 +72,26 @@ class Article extends \yii\db\ActiveRecord
         //Сохраняем название картинки без валидации
         return $this->save(false);
     }
+
+    public function getImage()
+    {
+        if($this->image)
+        {
+            return '/uploads/' . $this->image;
+        }
+        else return '/no-image.png';
+    }
+
+    //Удаление картинки
+    public function deleteImage()
+    {
+        $imageUploadModel = new ImageUpload();
+        $imageUploadModel->deleteCurrentImage($this->image);
+    }
+
+    public function beforeDelete()//Запускается перед тем как статья удалится
+    {
+        $this->deleteImage();//Удаляем картинку во время удаления статьи
+        return parent::beforeDelete();
+    }
 }
