@@ -161,14 +161,24 @@ class SiteController extends Controller
     public function actionView($id)
     {
         $article = Article::findOne($id);
+
         $article_tag = ArticleTag::find()->select(['tag_id'])->from(['article_tag'])->where(['article_id' => $id])->all();
-        //$article->hasOne(Tag::className(),['id' => 'tag_id'])->viaTable('article_tag', ['id'=>'article_id']);
-        //ArticleTag::find()->where(['article_id' => $id])->all();
-        //var_dump(ArticleTag::find()->where(['article_id' => $id])->all()); die;
-        //$tags = ArrayHelper::map(,'id', 'title');
+
+        //popular posts
+        $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+
+        //recent posts
+        $recent = Article::find()->orderBy('date asc')->limit(4)->all();
+
+        //categories
+        $categories = Category::find()->all();
+
         return $this->render('single', [
             'article' => $article,
-            'article_tag' => $article_tag
+            'article_tag' => $article_tag,
+            'popular' => $popular,
+            'recent' => $recent,
+            'categories' => $categories
         ]);
     }
 
