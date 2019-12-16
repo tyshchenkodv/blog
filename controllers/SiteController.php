@@ -75,12 +75,16 @@ class SiteController extends Controller
             ->all();
 
         //popular posts
-        $popular = Article::find()->orderBy('viewed desc')->all();
+        $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+
+        //recent posts
+        $recent = Article::find()->orderBy('date asc')->limit(4)->all();
 
         return $this->render('index', [
             'articles' => $articles,
             'pagination' => $pagination,
-            'popular' => $popular
+            'popular' => $popular,
+            'recent' => $recent
         ]);
     }
 
