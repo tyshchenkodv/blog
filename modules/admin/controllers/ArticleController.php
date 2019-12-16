@@ -2,10 +2,12 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Category;
 use app\models\ImageUpload;
 use Yii;
 use app\models\Article;
 use app\models\ArticleSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -154,10 +156,17 @@ class ArticleController extends Controller
         //Передаём текущую категорию виду
         $selectedCategory = $article->category->id;
 
-        $categories = [
-            1 => 'Cat 1',
-            2 => 'Cat 2'
-        ];
+        //Генерируем массив из БД
+        $categories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
+
+        if(Yii::$app->request->isPost)
+        {
+            $category = Yii::$app->request->post('category');
+            if($article->saveCategory($category))
+            {
+                return $this->redirect(['view','id' => $article->id]);
+            }
+        }
 
         return $this->render('category',[
             'article' => $article,
