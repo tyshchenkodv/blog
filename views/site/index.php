@@ -3,6 +3,8 @@
 /* @var $this yii\web\View */
 
 use yii\widgets\LinkPager;
+use app\models\Article;
+use app\models\Category;
 
 $this->title = 'Home';
 ?>
@@ -99,30 +101,11 @@ $this->title = 'Home';
                     <aside class="widget border pos-padding">
                         <h3 class="widget-title text-uppercase text-center">Categories</h3>
                         <ul>
-                            <li>
-                                <a href="#">Food & Drinks</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">Travel</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">Business</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">Story</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">DIY & Tips</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
-                            <li>
-                                <a href="#">Lifestyle</a>
-                                <span class="post-count pull-right"> (2)</span>
-                            </li>
+                            <?php foreach($categories as $category):?>
+                                <li>
+                                    <a href="#"><?= $category->title; ?></a>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </aside>
                 </div>
@@ -131,4 +114,3 @@ $this->title = 'Home';
     </div>
 </div>
 <!-- end main content-->
-<!--footer start-->
