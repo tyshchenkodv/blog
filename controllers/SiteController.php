@@ -182,8 +182,37 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionCategory()
+    public function actionCategory($id)
     {
-        return $this->render('category');
+        //build a DB query to get all articles
+        $query = Article::find()->where(['category_id'=>$id]);
+        //get the total number of articles
+        $countQuery = $query->count();
+        //create a pagination object with the total count
+        $pagination = new Pagination(['totalCount' => $countQuery, 'pageSize' => 6]);
+        //limit the query using the pagination and retrieve the article
+        $articles = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        //popular posts
+        $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+
+        //recent posts
+        $recent = Article::find()->orderBy('date asc')->limit(4)->all();
+
+        //categories
+        $categories = Category::find()->all();
+
+        $data['articles'] = $articles;
+        $data['pagination'] = $pagination;
+
+        return $this->render('index', [
+            'articles' => $data['articles'],
+            'pagination' => $data['pagination'],
+            'popular' => $popular,
+            'recent' => $recent,
+            'categories' => $categories
+        ]);
     }
 }
