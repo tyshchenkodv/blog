@@ -67,7 +67,6 @@ PublicAsset::register($this);
                         <?php endif;?>
                     </ul>
                 </div>
-
             </div>
             <!-- /.navbar-collapse -->
         </div>
