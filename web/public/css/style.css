@@ -33,7 +33,7 @@ Table of contents
 22. about me page
 23. portfolio 2
 24. header page
-
+25. in order to press the footer to the bottom
 -------------------------------------------------------------------*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,600);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,700,400italic);
@@ -92,6 +92,7 @@ header
     display: block;
     margin-right: 45px;
     padding: 0 0;
+    width: 90px;
 }
 
 .icon-right {
@@ -824,30 +825,23 @@ Instagram
 /*=======
 footer instragram
 ========*/
-.footer-instagram-section {
-    background: #fff;
+
+footer{
+    flex: 0 0 auto;
+    background-color: rgba(29,29,29,1);
+    color: white;
+    font-size: 14px;
+    padding: 10px 0;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
 }
 
-.footer-instagram-title {
-    padding: 35px 0 17px;
-    color: #333333;
-    font-size: 18px;
-    letter-spacing: 0.5px;
-}
-
-.footer-widget-section {
-    color: #fff;
-    background: #333333;
-
-}
-
-.footer-widget .widget-title {
-    color: #fff;
-}
-
-.footer-widget {
-    padding: 70px 0;
-
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
 }
 
 .about-content {
@@ -1638,4 +1632,24 @@ p.go-back-home a:hover {
     background: #00BFF3;
     color: #fff;
     border-color: #00BFF3;
+}
+
+
+/*-------------------
+in order to press the footer to the bottom
+---------------------*/
+html,
+body{
+    height: 100%;
+}
+
+.main-content {
+    box-sizing: border-box;
+    min-height: calc(100% - 118px);
+    padding-bottom: 50px;
+}
+footer {
+    margin-top: -50px;
+    min-height: 30px;
+    
 }
