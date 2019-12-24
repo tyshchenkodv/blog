@@ -83,7 +83,10 @@ PublicAsset::register($this);
             <div class="row">
                 <div class="col-12 footer py-4">
                     <div>
-                        For any questions send on : <a href="mailto:lim1998321@gmail.com" class="mail">lim1998321@gmail.com</a>
+                        <p>For any questions send on : <a href="mailto:lim1998321@gmail.com" class="mail">lim1998321@gmail.com</a></p>
+                        <p>Designed by Evgeniy Babiy</p>
+                        <p>Developed by Tyshenko Dmytro</p>
+                        <p>Project-manager Kate Vasyhno</p>
                     </div>
                     <div>
                         2019 (c) Sumy State University
