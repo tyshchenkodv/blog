@@ -1,44 +1,22 @@
-<?php
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use yii\helpers\Url;
-use yii\widgets\DetailView;
-
-/*@var $this yii\web\View*/
-/* @var $model app\models\User */
-
-/* @var $form  yii\widgets\ActiveForm */
-
-$this->title = 'My Home Page';
-$this->params['breadcrumbs'][] = $this->title;
-?>
-
-<div class="user-profile">
-    <h1><?= Html::encode($this->title)?></h1>
-
-    <h3>Photo
-
-        <div class="user-photo">
-            <?php if ($model->image):?>
-                <img src="/web/<?= $model->image?>" alt="no-image">
-            <?php endif;?>
-
-            <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/from-data']]); ?>
-
-            <div class="form-group">
-            <button>Load</button>
-            </div>
-            <?php ActiveForm::end(); ?>
-        </div>
-    </h3>
-
-    <h3>User name</h3>
-    <?php if(!empty($user)):?>
-        <?php foreach($user as $users):?>
-    <b><?=$user->name?></b><?= $user->text?>
-    <?php endforeach; ?>   <?php endif;?>
-
-    <h3>Email </h3>
-    <b><?=$model->user->email?></b><?= $model->user->text?>
-
+<div class="admin-default-index">
+    <h1>Home Page</h1>
+    <br>
+    <br>
+    <h4>From this page you can go to other pages.  
+        Article Page - Creates new articles.  <br>
+        Comment, Categories and Tags - to create / manage / edit comments.<br>
+        You can also return to the main blog page. <br>Just click on "My Application"
+    </h4>
+<h2><br>
+Site developers<br>
+</h2>
+<h4>
+Frontend: Evgeniy Babiy<br>
+Backend: Dmytro Tischenko<br>
+Model: Ekaterina Vasiukhno <br>
+</h4>
+    <p>    </p>
+    <p>
+               <code> </code>
+    </p>
 </div>
