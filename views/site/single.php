@@ -18,7 +18,6 @@ use yii\helpers\Url;
 
                             <h1 class="entry-title"><a href="blog.html"><?= $article->title; ?></a></h1>
 
-
                         </header>
                         <div class="entry-content">
                             <?= $article->content; ?>
@@ -31,14 +30,23 @@ use yii\helpers\Url;
 
                         <div class="social-share">
 							<span
-                                class="social-share-title pull-left text-capitalize">By <?= $article->author->name;?> On <?= $article->getDate();?></span>
+                                class="social-share-title pull-left text-capitalize">By <?= $article->author->name?> On <?= $article->getDate();?></span>
                             <ul class="text-center pull-right">
-                                <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="s-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="s-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="s-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
+                          <span
+                                class="social-share-title pull-left text-capitalize">By <?= $article->author->name?> On <?= $article->getDate();?></span>
+                            <ul class="text-center pull-right"><a href="http://blog.pluso.ru/novosti/3-veshhi-kotorye-neobxodimo-znat-o-dannyx-iz-socialnoj-seti.html" title="Facebook" class="pluso-facebook"></a>
+                                <li><a class="s-facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">                                  
+                                    <i class="fa fa-facebook"></i></a></li>
+								<li><a class="s-twitter" href="https://twitter.com/intent/tweet?text=<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+                                    <i class="fa fa-twitter"></i></a></li>	
+								<li><a class="s-instagram" href="https://instagram.com">
+                                    <i class="fa fa-instagram"></i></a></li>		
+								<li><a class="s-tumblr" href="https://tumblr.com">
+                                    <i class="fa fa-tumblr"></i></a></li>	
+								<li><a class="s-pinterest" href="http://pinterest.com/pin/create/button/?url=<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+                                    <i class="fa fa-pinterest"></i></a></li>
+												
+							</ul>
                         </div>
                     </div>
                 </article>
