@@ -33,7 +33,7 @@ use yii\helpers\Url;
                                 class="social-share-title pull-left text-capitalize">By <?= $article->author->name?> On <?= $article->getDate();?></span>
                             <ul class="text-center pull-right">
                           <span
-                                class="social-share-title pull-left text-capitalize">By <?= $article->author->name?> On <?= $article->getDate();?></span>
+                              
                             <ul class="text-center pull-right"><a href="http://blog.pluso.ru/novosti/3-veshhi-kotorye-neobxodimo-znat-o-dannyx-iz-socialnoj-seti.html" title="Facebook" class="pluso-facebook"></a>
                                 <li><a class="s-facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">                                  
                                     <i class="fa fa-facebook"></i></a></li>
