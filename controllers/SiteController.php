@@ -69,7 +69,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         //build a DB query to get all articles
-        $query = Article::find();
+        $query = Article::find()->orderBy('date desc');
         //get the total number of articles
         $countQuery = $query->count();
         //create a pagination object with the total count
@@ -83,7 +83,7 @@ class SiteController extends Controller
         $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
 
         //recent posts
-        $recent = Article::find()->orderBy('date asc')->limit(4)->all();
+        $recent = Article::find()->orderBy('date desc')->limit(4)->all();
 
         //categories
         $categories = Category::find()->all();

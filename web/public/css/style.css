@@ -1,14 +1,11 @@
 /*------------------------------------------------------------------
 Common Stylesheet
-
 Project:   Kotha Pro -
 Build:     Bootstrap 3 +
 Author:    ShapedTheme
-
 -------------------------------------------------------------------*/
 /*------------------------------------------------------------------
 Table of contents
-
 1. preloader
 2. elements
 3. header
@@ -1651,5 +1648,5 @@ body{
 footer {
     margin-top: -50px;
     min-height: 30px;
-    
+
 }
